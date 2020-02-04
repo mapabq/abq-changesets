@@ -1,0 +1,17 @@
+{
+  "name": "rss",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "dist/bundle.js",
+  "source": "src/index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "prettier": "^1.19.1",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}

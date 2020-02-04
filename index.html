@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+	body, html { 
+        margin: 0; 
+        padding: 0;
+        font-family: 'Roboto', sans-serif; 
+    }
+
+	#map { 
+        width:100%;
+        height:calc(100vh - 62px);
+    }
+
+    h1 {
+        margin:0;
+    }
+
+    .nav {
+        z-index: 9;
+        height:28px;
+        margin-bottom: 2px;
+        padding: 16px;
+        box-shadow: #999 0px 1px 2px;
+    }
+    .content  {
+        display: flex; 
+        flex-direction: row;
+    }
+
+    .list {
+        height:calc(100vh - 62px);
+        overflow-y: scroll;
+    }
+
+    .list-col {
+        flex: 1;
+    }
+    .map-col {
+        flex: 3;
+
+    }
+
+    .changeset {
+        padding:12px;
+        vertical-align: center;
+        min-height: 46px;
+        border-bottom:1px solid black;
+    }
+
+    .changeset--hover {
+        background-color: #ddd;
+    }
+
+    .changeset:hover {
+        background-color: #ddd;
+    }
+
+</style>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="nav"><h1>Recent Albuquerque Changesets</h1></nav>
+    <div class="content">
+        <div class="list-col"> <div class="list"></div></div>
+        <div class="map-col"><div id="map"></div></div>
+    </div>
+    <script src="dist/bundle.js"></script>
+</body>
+</html>
