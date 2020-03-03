@@ -77,7 +77,7 @@ function parseItem(item) {
 }
 
 async function getRSS() {
-	let res = await fetch('https://osmcha.mapbox.com/api/v1/aoi/8755f992-d7e4-48f0-af7b-181b3f5b5241/changesets/feed/');
+	let res = await fetch('https://osmcha.org/api/v1/aoi/8755f992-d7e4-48f0-af7b-181b3f5b5241/changesets/feed/');
 	let text = await res.text();
 	return text;
 }
