@@ -5,7 +5,7 @@
   "main": "dist/bundle.js",
   "source": "src/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "rm -rf dist && mkdir dist && webpack",
     "watch": "webpack --watch"
   },
   "dependencies": {},
