@@ -59,6 +59,7 @@ class ChangeSet {
 		usernameAnchor.href = `https://www.openstreetmap.org/user/${username}`;
 		usernameAnchor.innerText = `${username}`;
 		this.elem.setAttribute('data-changeset', changesetId);
+		this.elem.id = `changeset-${changesetId}`;
 		this.elem.innerHTML = `Changeset: ${changesetAnchor.outerHTML}<br>By: ${usernameAnchor.outerHTML}<br>Comment: ${comment}`;
 	}
 }
@@ -92,7 +93,7 @@ getRSS().then((xmlData) => {
 	let frag = document.createDocumentFragment();
 	for (const item of items) {
 		let poly = item.getElementsByTagName('georss:polygon');
-		let div = document.createElement('div');
+		let div = document.createElement('div')
 		div.classList.add('changeset');
 		let data = parseItem(item);
 		let changeSet = new ChangeSet(div, data);
@@ -142,6 +143,17 @@ getRSS().then((xmlData) => {
 		for (const c of changeSets) {
 			c.addEventListeners();
 		}
+
+		map.on('click', 'poly-fills', (e) => {
+			if (e.features.length > 0) {
+				if (hoveredStateId) {
+					map.setFeatureState({ source: 'polys', id: hoveredStateId }, { hover: false });
+				}
+				hoveredStateId = e.features[0].id;
+				const changesetItem = document.getElementById(`changeset-${hoveredStateId}`);
+				changesetItem.scrollIntoView()
+			}
+		})
 
 		map.on('mousemove', 'poly-fills', (e) => {
 			if (e.features.length > 0) {
